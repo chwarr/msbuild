@@ -1,9 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System;
-using System.IO;
-using System.Reflection;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Tasks;
 using Microsoft.Build.Utilities;
@@ -19,7 +16,7 @@ namespace Microsoft.Build.UnitTests
         [Fact]
         public void OneItemNop()
         {
-            RemoveDuplicates t = new RemoveDuplicates();
+            var t = new RemoveDuplicates();
             t.BuildEngine = new MockEngine();
 
             t.Inputs = new ITaskItem[] { new TaskItem("MyFile.txt") };
@@ -37,7 +34,7 @@ namespace Microsoft.Build.UnitTests
         [Fact]
         public void TwoItemsTheSame()
         {
-            RemoveDuplicates t = new RemoveDuplicates();
+            var t = new RemoveDuplicates();
             t.BuildEngine = new MockEngine();
 
             t.Inputs = new ITaskItem[] { new TaskItem("MyFile.txt"), new TaskItem("MyFile.txt") };
@@ -55,7 +52,7 @@ namespace Microsoft.Build.UnitTests
         [Fact]
         public void TwoItemsDifferent()
         {
-            RemoveDuplicates t = new RemoveDuplicates();
+            var t = new RemoveDuplicates();
             t.BuildEngine = new MockEngine();
 
             t.Inputs = new ITaskItem[] { new TaskItem("MyFile1.txt"), new TaskItem("MyFile2.txt") };
@@ -74,7 +71,7 @@ namespace Microsoft.Build.UnitTests
         [Fact]
         public void CaseInsensitive()
         {
-            RemoveDuplicates t = new RemoveDuplicates();
+            var t = new RemoveDuplicates();
             t.BuildEngine = new MockEngine();
 
             t.Inputs = new ITaskItem[] { new TaskItem("MyFile.txt"), new TaskItem("MyFIle.tXt") };
@@ -92,7 +89,7 @@ namespace Microsoft.Build.UnitTests
         [Fact]
         public void MissingInputs()
         {
-            RemoveDuplicates t = new RemoveDuplicates();
+            var t = new RemoveDuplicates();
             t.BuildEngine = new MockEngine();
             bool success = t.Execute();
 
